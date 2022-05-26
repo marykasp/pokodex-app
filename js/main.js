@@ -44,7 +44,7 @@ const styleCard = (color, card) => {
 const generateCard = (pokemon) => {
   console.log(pokemon);
   // destructure pokemon object to get necessary properties
-  const { name, stats, sprites, types } = pokemon;
+  const { id, name, stats, sprites, types } = pokemon;
   const [stat1, stat2, stat3, stat4, stat5] = stats;
   // stats is an array of objects - get base_stat property from first 4 objects
   const hp = stat1.base_stat;
@@ -65,14 +65,20 @@ const generateCard = (pokemon) => {
   card.setAttribute("id", "card");
 
   card.innerHTML = `
-    <p class="hp">
-      <span>HP</span>
+    <div class="info">
+      <p class="hp">
+        <span>HP</span>
         ${hp}
-    </p>
+      </p>
+      <p class="id">
+        <span>#</span>
+        ${id}
+      </p>
+    </div>
     <img src="${imgSrc}" alt="${name}" />
     <h2 class="poke-name">${name[0].toUpperCase() + name.slice(1)}</h2>
     <div class="types">
-  
+
     </div>
     <div class="stats">
       <div>

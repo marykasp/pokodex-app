@@ -81,6 +81,7 @@ header {
 
 .fetch-data {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
@@ -130,6 +131,7 @@ header {
   border-radius: 5px;
   color: #fff;
   margin-left: 30px;
+  margin-right: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -137,6 +139,8 @@ header {
 #btn:hover {
   background-color: var(--light-text);
 }
+
+
 
 /* Side Type Navigation */
 .navbar {
@@ -196,6 +200,7 @@ header {
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin-left: 92px;
 }
 
 .card-wrapper-inner {
@@ -222,14 +227,29 @@ header {
   margin: 20px auto;
 }
 
+
 .hp {
   width: 80px;
   background-color: #fff;
   text-align: center;
   padding: 8px 0;
   border-radius: 30px;
-  margin-left: auto;
   font-weight: 400;
+  margin-left: auto;
+}
+
+.id {
+  width: 70px;
+  background-color: var(--text-color);
+  color: #fff;
+  text-align: center;
+  padding: 4px 0;
+  border-radius: 3px;
+  font-weight: 300;
+  margin-top: 4px;
+  position: relative;
+  top: -65px;
+  left: 0;
 }
 
 .poke-name {
@@ -244,7 +264,8 @@ header {
 }
 
 .hp span,
-.types span {
+.types span,
+.id span {
   font-size: 12px;
   letter-spacing: 0.4px;
   font-weight: 600;
