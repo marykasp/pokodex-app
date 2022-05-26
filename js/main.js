@@ -16,25 +16,26 @@ const typeColor = {
   rock: "#2d3436",
   water: "#0190ff",
 };
-const url = "https://pokeapi.co/api/v2/pokemon/";
-const card = document.getElementById("card");
+const url = "https://pokeapi.co/api/v2/";
 const btn = document.getElementById("btn");
 const search = document.querySelector("#search-input");
-console.log(search);
+const logo = document.querySelector(".logo span");
+const cardContainer = document.querySelector(".card-wrapper-inner");
 
-const appendTypes = (types) => {
+const appendTypes = (types, element) => {
   types.forEach((item) => {
     const span = document.createElement("span");
     span.innerText = item.type.name;
-    document.querySelector(".types").appendChild(span);
+    element.appendChild(span);
   });
 };
 
-const styleCard = (color) => {
+const styleCard = (color, card) => {
   card.style.background = `radial-gradient(circle at 50% 0%, ${color} 36%, #fff 36%)`;
   card.querySelectorAll(".types span").forEach((type) => {
     type.style.backgroundColor = color;
   });
+  // logo.style.color = color;
 };
 
 // Generate card
@@ -52,6 +53,10 @@ const generateCard = (pokemon) => {
 
   // Set theme color based on pokemon type
   const themeColor = typeColor[types[0].type.name];
+
+  // create new card for each pokemon
+  const card = document.createElement("div");
+  card.setAttribute("id", "card");
 
   card.innerHTML = `
     <p class="hp">
@@ -79,17 +84,35 @@ const generateCard = (pokemon) => {
     </div>
   `;
 
-  appendTypes(types);
-  styleCard(themeColor);
+  const typeDiv = card.children[3];
+
+  appendTypes(types, typeDiv);
+  styleCard(themeColor, card);
+  cardContainer.appendChild(card);
+};
+
+const generatePokeArr = (arr) => {
+  arr.forEach((item) => {
+    console.log(item);
+  });
 };
 
 const getPokeData = async (term) => {
-  console.log(term);
   // fetch data using random id
-  const response = await fetch(`${url}${term}`);
+  const response = await fetch(`${url}pokemon/${term}`);
   if (response.ok) {
     const pokemon = await response.json();
     generateCard(pokemon);
+  }
+};
+
+const getPokeTypes = async (type) => {
+  const response = await fetch(`${url}type/${type}`);
+  if (response.ok) {
+    const data = await response.json();
+    data.pokemon.forEach((item) => {
+      // get name of each pokemon and pass to getPokeData
+    });
   }
 };
 

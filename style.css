@@ -2,7 +2,7 @@
 
 :root {
   --container-color: #eff3ff;
-  --main-color: #62A78F;
+  --main-color: #6649b8;
   --text-color: #3A3B3C;
   --light-text: #404060;
 }
@@ -26,7 +26,20 @@ body {
   background-color: var(--container-color);
 }
 
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+}
+
 .container {
+  margin-left: 5rem;
   width: 1200px;
   display: flex;
   flex-direction: column;
@@ -61,7 +74,6 @@ header {
   text-transform: uppercase;
   /* margin: 0 auto 0 0; */
 }
-
 
 .nav .logo span {
   color: var(--main-color);
@@ -109,24 +121,89 @@ header {
   color: rgb(193, 193, 193);
 }
 
-.card-container {
-  margin-top: 50px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-evenly;
-  /* gap: 1rem; */
+#btn {
+  display: block;
+  padding: 5px 30px;
+  font-size: 18px;
+  background-color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  margin-left: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* .wrapper {
-  width: 350px;
-  border: 1px solid purple;
-} */
+#btn:hover {
+  background-color: var(--light-text);
+}
+
+/* Side Type Navigation */
+.navbar {
+  width: 5rem;
+  height: 100vh;
+  position: fixed;
+  background-color: var(--container-color);
+  top: 0;
+  left: 0;
+}
+
+.navbar-nav {
+  height: 70vh;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3rem;
+}
+
+.nav-item {
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover .nav-link,
+.nav-item:hover .bx {
+  color: var(--main-color);
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-nav .bx {
+  color: var(--light-text);
+  font-size: 45px;
+}
+
+/* Pokemon Card */
+.card-container {
+  margin-top: 70px;
+  display: flex;
+  /* flex-wrap: wrap; */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.card-wrapper-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
 
 #card {
-  margin-top: 20px;
-  position: relative;
+  /* display: flex;
+  flex-direction: column; */
   width: 350px;
+  /* position: relative; */
   padding: 30px 20px;
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
@@ -185,19 +262,3 @@ header {
   color: var(--light-text);
 }
 
-#btn {
-  display: block;
-  padding: 5px 30px;
-  font-size: 18px;
-  background-color: var(--text-color);
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  margin-left: 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-#btn:hover {
-  background-color: var(--main-color);
-}
