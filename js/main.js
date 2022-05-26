@@ -3,6 +3,14 @@ const card = document.getElementById("card");
 const btn = document.getElementById("btn");
 const search = document.querySelector("#search-input");
 
+const appendTypes = (types) => {
+  types.forEach((item) => {
+    const span = document.createElement("span");
+    span.innerText = item.type.name;
+    document.querySelector(".types").appendChild(span);
+  });
+};
+
 // Generate card
 const generateCard = (pokemon) => {
   console.log(pokemon);
@@ -24,8 +32,7 @@ const generateCard = (pokemon) => {
     <img src="${imgSrc}" alt="${name}" />
     <h2 class="poke-name">${name}</h2>
     <div class="types">
-      <span>Type 1</span>
-      <span>Type 2</span>
+  
     </div>
     <div class="stats">
       <div>
@@ -42,6 +49,8 @@ const generateCard = (pokemon) => {
       </div>
     </div>
   `;
+
+  appendTypes(types);
 };
 
 const getPokeData = async () => {
