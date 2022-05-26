@@ -126,7 +126,6 @@ header {
 #card {
   margin-top: 20px;
   position: relative;
-  background: radial-gradient(circle at 50% 0%, var(--main-color) 36%, #fff 36%);
   width: 350px;
   padding: 30px 20px;
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.15);
