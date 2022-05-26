@@ -112,9 +112,12 @@ const getPokeTypes = async (type) => {
     const data = await response.json();
     data.pokemon.forEach((item) => {
       // get name of each pokemon and pass to getPokeData
+      getPokeData(item.pokemon.name);
     });
   }
 };
+
+getPokeTypes("fire");
 
 // Add Event Listeners
 btn.addEventListener("click", () => {
