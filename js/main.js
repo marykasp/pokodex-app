@@ -15,9 +15,11 @@ const typeColor = {
   psychic: "#a29bfe",
   rock: "#2d3436",
   water: "#0190ff",
+  dark: "#705746",
 };
 const url = "https://pokeapi.co/api/v2/";
 const btn = document.getElementById("btn");
+const typeBtn = document.querySelectorAll(".nav-link");
 const search = document.querySelector("#search-input");
 const logo = document.querySelector(".logo span");
 const cardContainer = document.querySelector(".card-wrapper-inner");
@@ -50,6 +52,10 @@ const generateCard = (pokemon) => {
   const defense = stat3.base_stat;
   const speed = stat5.base_stat;
   const imgSrc = sprites.other.dream_world.front_default;
+
+  if (!imgSrc) {
+    imgSrc = sprites.other[official - artwork].front_default;
+  }
 
   // Set theme color based on pokemon type
   const themeColor = typeColor[types[0].type.name];
@@ -117,10 +123,10 @@ const getPokeTypes = async (type) => {
   }
 };
 
-getPokeTypes("fire");
-
 // Add Event Listeners
 btn.addEventListener("click", () => {
+  // clear container
+  cardContainer.innerHTML = "";
   // Generate a random number between 1 and 150
   let id = Math.floor(Math.random() * 150) + 1;
   console.log(id);
@@ -128,13 +134,25 @@ btn.addEventListener("click", () => {
 });
 
 search.addEventListener("change", (e) => {
+  cardContainer.innerHTML = "";
   // pass value entered to fetch endpoint
   const name = e.target.value.trim().toLowerCase();
   getPokeData(name);
   e.target.value = "";
 });
+
+// iterate over the buttons and add event listener to each getting the target
+typeBtn.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    cardContainer.innerHTML = "";
+    let type = e.target.id;
+    // fetch data for those pokemon types
+    getPokeTypes(type);
+  });
+});
+
 // display a random pokemon card when window loads
-window.addEventListener(
-  "load",
-  getPokeData(Math.floor(Math.random() * 150) + 1)
-);
+// window.addEventListener(
+//   "load",
+//   getPokeData(Math.floor(Math.random() * 150) + 1)
+// );
