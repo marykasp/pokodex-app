@@ -31,6 +31,9 @@ const appendTypes = (types) => {
 
 const styleCard = (color) => {
   card.style.background = `radial-gradient(circle at 50% 0%, ${color} 36%, #fff 36%)`;
+  card.querySelectorAll(".types span").forEach((type) => {
+    type.style.backgroundColor = color;
+  });
 };
 
 // Generate card
@@ -55,7 +58,7 @@ const generateCard = (pokemon) => {
         ${hp}
     </p>
     <img src="${imgSrc}" alt="${name}" />
-    <h2 class="poke-name">${name}</h2>
+    <h2 class="poke-name">${name[0].toUpperCase() + name.slice(1)}</h2>
     <div class="types">
   
     </div>
