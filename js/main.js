@@ -20,6 +20,7 @@ const url = "https://pokeapi.co/api/v2/pokemon/";
 const card = document.getElementById("card");
 const btn = document.getElementById("btn");
 const search = document.querySelector("#search-input");
+console.log(search);
 
 const appendTypes = (types) => {
   types.forEach((item) => {
@@ -82,12 +83,10 @@ const generateCard = (pokemon) => {
   styleCard(themeColor);
 };
 
-const getPokeData = async () => {
-  // Generate a random number between 1 and 150
-  let id = Math.floor(Math.random() * 150) + 1;
-  console.log(id);
+const getPokeData = async (term) => {
+  console.log(term);
   // fetch data using random id
-  const response = await fetch(`${url}${id}`);
+  const response = await fetch(`${url}${term}`);
   if (response.ok) {
     const pokemon = await response.json();
     generateCard(pokemon);
@@ -95,6 +94,21 @@ const getPokeData = async () => {
 };
 
 // Add Event Listeners
-btn.addEventListener("click", getPokeData);
+btn.addEventListener("click", () => {
+  // Generate a random number between 1 and 150
+  let id = Math.floor(Math.random() * 150) + 1;
+  console.log(id);
+  getPokeData(id);
+});
+
+search.addEventListener("change", (e) => {
+  // pass value entered to fetch endpoint
+  const name = e.target.value.trim().toLowerCase();
+  getPokeData(name);
+  e.target.value = "";
+});
 // display a random pokemon card when window loads
-window.addEventListener("load", getPokeData);
+window.addEventListener(
+  "load",
+  getPokeData(Math.floor(Math.random() * 150) + 1)
+);
