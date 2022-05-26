@@ -85,14 +85,14 @@ header {
 }
 
 .search-box .bx {
-  color: #fff;
+  color: var(--main-color);
   font-size: 1.1rem;
   transition: color 0.3s ease;
   cursor: pointer;
 }
 
 .search-box .bx:hover {
-  color: var(--main-color);
+  color: var(--text-color);
 }
 
 #search-input {
