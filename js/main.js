@@ -152,7 +152,7 @@ typeBtn.forEach((btn) => {
 });
 
 // display a random pokemon card when window loads
-// window.addEventListener(
-//   "load",
-//   getPokeData(Math.floor(Math.random() * 150) + 1)
-// );
+window.addEventListener(
+  "load",
+  getPokeData(Math.floor(Math.random() * 150) + 1)
+);
