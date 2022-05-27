@@ -58,17 +58,24 @@ header {
   width: 100%;
   background-color: #fff;
   z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-height: 80px;
 }
 
 .nav {
+  /* border: 1px solid var(--main-color); */
+  margin-left: 20px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 15px 0;
+  width: 80%;
 }
 
 .nav .logo {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: var(--text-color);
   font-weight: 600;
   text-transform: uppercase;
@@ -96,6 +103,7 @@ header {
   background-color: var(--container-color);
   border-radius: 4rem;
   margin-right: 1.4rem;
+  margin-left: 1.4rem;
 }
 
 .search-box .bx {
@@ -130,8 +138,7 @@ header {
   border: none;
   border-radius: 5px;
   color: #fff;
-  margin-left: 30px;
-  margin-right: 20px;
+  margin-right: 40px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -140,6 +147,71 @@ header {
   background-color: var(--light-text);
 }
 
+.select-menu {
+  position: relative;
+  width: 180px;
+  margin: auto;
+  margin-top: 12px;
+  margin-right: 40px;
+  border: 1px solid var(--main-color);
+}
+
+.select-menu .select-btn {
+  display: flex;
+  height: 40px;
+  background: var(--container-color);
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.select-btn i {
+  font-size: 20px
+}
+
+.select-menu.active .select-btn i {
+  transform: rotate(-180deg);
+  transition: 0.2s;
+}
+
+.select-menu.active .options{
+  display: block;
+}
+
+.select-menu .options {
+  position: relative;
+  padding: 10px;
+  background: #fff;
+  border-radius: 8px;
+  /* margin-top: 10px; */
+  box-shadow: 0 0 3px rgba(0,0,0,0.1);
+  display: none;
+}
+
+.options .option {
+  display: flex;
+  height: 30px;
+  cursor: pointer;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 8px;
+  align-items: center;
+  background: #fff;
+}
+
+.options .option:hover {
+  background: #f2f2f2;
+}
+
+.option .option-text {
+  font-size: 14px;
+}
 
 
 /* Side Type Navigation */
