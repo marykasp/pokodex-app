@@ -205,6 +205,10 @@ header {
   background: #fff;
 }
 
+/* .options .option.bug {
+  background: green;
+} */
+
 .options .option:hover {
   background: #f2f2f2;
 }

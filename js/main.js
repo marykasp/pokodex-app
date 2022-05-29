@@ -25,6 +25,7 @@ const logo = document.querySelector(".logo span");
 const cardContainer = document.querySelector(".card-wrapper-inner");
 
 const appendTypes = (types, element) => {
+  console.log(types)
   types.forEach((item) => {
     const span = document.createElement("span");
     span.innerText = item.type.name;
@@ -54,10 +55,10 @@ const generateCard = (pokemon) => {
   const imgSrc = sprites.other.dream_world.front_default;
 
   if (!imgSrc) {
-    imgSrc = sprites.other[official - artwork].front_default;
+    imgSrc = sprites.other[official-artwork].front_default;
   }
 
-  // Set theme color based on pokemon type
+  // Set theme color based on first pokemon type
   const themeColor = typeColor[types[0].type.name];
 
   // create new card for each pokemon

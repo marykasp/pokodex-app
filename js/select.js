@@ -11,11 +11,13 @@ selectBtn.addEventListener("click", () => {
 
 options.forEach((option) => {
   option.addEventListener('click', () => {
+    cardContainer.innerHTML = "";
     let selectedOption = option.querySelector(".option-text").innerText;
     sBtn_text.innerText = selectedOption
+    option.classList.add(selectedOption)
 
-    optionMenu.classList.remove('active')
+    // optionMenu.classList.remove('active')
     // call function to fetch data based on type
-    console.log(selectedOption)
+    getPokeTypes(selectedOption)
   })
 })
