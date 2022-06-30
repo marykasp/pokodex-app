@@ -38,7 +38,7 @@ const styleCard = (color, card) => {
   card.querySelectorAll(".types span").forEach((type) => {
     type.style.backgroundColor = color;
   });
-  // logo.style.color = color;
+  logo.style.color = color;
 };
 
 // Generate card
@@ -62,6 +62,7 @@ const generateCard = (pokemon) => {
   const themeColor = typeColor[types[0].type.name];
 
   // create new card for each pokemon
+
   const card = document.createElement("div");
   card.setAttribute("id", "card");
 
@@ -101,7 +102,7 @@ const generateCard = (pokemon) => {
 
   appendTypes(types, typeDiv);
   styleCard(themeColor, card);
-  cardContainer.appendChild(card);
+  return card;
 };
 
 const generatePokeArr = (arr) => {
@@ -115,7 +116,10 @@ const getPokeData = async (term) => {
   const response = await fetch(`${url}pokemon/${term}`);
   if (response.ok) {
     const pokemon = await response.json();
-    generateCard(pokemon);
+    // generateCard(pokemon);
+    const fragment = document.createDocumentFragment();
+    fragment.appendChild(generateCard(pokemon))
+    cardContainer.appendChild(fragment)
   }
 };
 
