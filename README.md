@@ -14,4 +14,4 @@ Generates a random pokemon on first load. Allows the user to type in search box 
 
 ## Design
 
-[screenshot](./design/1.png)
+![pokodex-main](./design/1.png)
